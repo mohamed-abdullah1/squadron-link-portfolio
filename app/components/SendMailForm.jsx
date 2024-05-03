@@ -7,32 +7,50 @@ import { PulseLoader } from "react-spinners";
 const SendMailForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("Can't send the mail !");
   const [isLoading, setIsLoading] = useState(false);
+  const emailRef = useRef();
+  const messageRef = useRef();
   const form = useRef();
-  const sendEmail = (e) => {
+  function isValidEmail(email) {
+    // Regular expression for validating email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Test if the email matches the regex pattern
+    return emailRegex.test(email);
+  }
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     setError(false);
     setSuccess(false);
-    setIsLoading(true);
     console.log("👉🔥 ", form.current);
-
-    emailjs
-      .sendForm("service_hw47sqj", "template_g111eed", form.current, {
-        publicKey: "7aKNPdxKP0LULQ2bZ",
-      })
-      .then(
-        () => {
-          setSuccess(true);
-          form.current.reset();
-        },
-        (error) => {
-          setError(true);
+    if (!emailRef.current.value || !messageRef.current.value) {
+      setErrorMsg("You Must enter the email and message first");
+      return setError(true);
+    }
+    if (!isValidEmail(emailRef.current.value)) {
+      setErrorMsg("This mail isn't valid");
+      return setError(true);
+    }
+    setIsLoading(true);
+    try {
+      const res = await emailjs.sendForm(
+        "service_hw47sqj",
+        "template_g111eed",
+        form.current,
+        {
+          publicKey: "7aKNPdxKP0LULQ2bZ",
         }
-      )
-      .finally(() => {
-        setIsLoading(false);
-      });
+      );
+      setSuccess(true);
+    } catch (err) {
+      setErrorMsg(err);
+      return setError(true);
+    } finally {
+      setIsLoading(false);
+
+      form.current.reset();
+    }
   };
 
   return (
@@ -45,6 +63,7 @@ const SendMailForm = () => {
       <p className="font-semibold ">Dear Squadron Link Team,</p>
       {/* TEXT FIELD MESSAGE */}
       <textarea
+        ref={messageRef}
         className="bg-red-50 outline-none resize-none border-t-red-50 border-l-red-50 border-r-red-50 border-b-black border-2 "
         name="user_message"
         id="user_message"
@@ -54,6 +73,7 @@ const SendMailForm = () => {
       <p className="font-semibold">My email address</p>
       {/* INPUT email FIELD */}
       <input
+        ref={emailRef}
         className="bg-red-50 outline-none resize-none border-t-red-50 border-l-red-50 border-r-red-50 border-b-black border-2 "
         type="email"
         name="user_name"
@@ -70,9 +90,7 @@ const SendMailForm = () => {
         </p>
       )}
 
-      {error && (
-        <p className="text-red-600 font-semibold ">Can't send the mail !</p>
-      )}
+      {error && <p className="text-red-600 font-semibold ">{errorMsg}</p>}
     </form>
   );
 };
