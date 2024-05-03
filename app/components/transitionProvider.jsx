@@ -6,17 +6,17 @@ const links = [
   { url: "/", title: "Home 😎" },
   { url: "/about", title: "About ✨" },
   { url: "/contact", title: "Contact 🌟" },
-  { url: "/portfolio", title: "Portfolio 🔥" },
+  { url: "/projects", title: "Projects 🔥" },
 ];
 const TransitionProvider = ({ children }) => {
   const pathname = usePathname();
   return (
-    <div key={pathname}>
+    <div key={pathname} className="overflow-hidden">
       <AnimatePresence>
         <motion.div
           className="fixed top-0 left-0 right-0 bottom-0 h-screen bg-black w-screen rounded-[] z-30 "
           initial={{ top: 0 }}
-          animate={{ top: "140vh" }}
+          animate={{ top: "100vh" }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.3, ease: "easeInOut" }}
         ></motion.div>
@@ -27,7 +27,7 @@ const TransitionProvider = ({ children }) => {
           md:text-5xl
           lg:text-7xl text-white m-auto z-40 text-center cursor-default w-fit h-fit capitalize"
           initial={{ opacity: 1 }}
-          animate={{ opacity: 0, top: "140vh" }}
+          animate={{ opacity: 0, top: "100vh" }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 0.3 }}
         >

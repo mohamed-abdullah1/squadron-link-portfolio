@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 const PageTransitionProvider = ({ children }) => {
   return (
     <motion.div
+      className="h-full"
       initial={{ y: "-140vh" }}
       animate={{ y: 0 }}
       transition={{ delay: 0.6 }}

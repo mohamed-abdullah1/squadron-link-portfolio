@@ -4,7 +4,7 @@ import PageTransitionProvider from "./components/pageTrasitionProvider";
 export default async function Home() {
   return (
     <PageTransitionProvider>
-      <div className=" p-4 font-regular br-red-100 h-screen flex items-center justify-center gap-4   flex-col lg:flex-row font-inter">
+      <div className=" p-4 font-regular br-red-100 h-full flex items-center justify-center gap-4   flex-col lg:flex-row font-inter">
         {/* IMAGE CONTAINER */}
         <div className="h-1/2 w-full md:h-full md:w-1/2 relative">
           <Image
@@ -29,7 +29,7 @@ export default async function Home() {
           {/* BUTTONS CONTAINER */}
           <div className="flex justify-center lg:justify-start gap-4 ">
             <button className="bg-black  text-white px-4 py-2  text-sm sm:text-lg md:text-xl  shadow-lg shadow-red-200 font-light rounded-md">
-              <Link href="/portfolio">View Portfolio</Link>
+              <Link href="/projects">View Portfolio</Link>
             </button>
             <button className="border-2 rounded-md border-black px-4 py-2  text-sm sm:text-lg md:text-xl">
               <Link href="/contact">Contact Us</Link>
