@@ -4,14 +4,14 @@ import PageTransitionProvider from "./components/pageTrasitionProvider";
 export default async function Home() {
   return (
     <PageTransitionProvider>
-      <div className=" p-4 font-regular br-red-100 h-full flex items-center justify-center gap-4   flex-col lg:flex-row font-inter">
+      <div className=" p-4 font-regular br-red-100 h-full flex items-center justify-center gap-4 lg:gap-8   flex-col lg:flex-row font-inter">
         {/* IMAGE CONTAINER */}
         <div className="h-1/2 w-full md:h-full md:w-1/2 relative">
           <Image
             className="object-contain justify-start"
             alt="hero image"
             fill
-            src="/hero-orange.png"
+            src="/hero_2_@.png"
           />
         </div>
         {/* TEXT CONTAINER */}

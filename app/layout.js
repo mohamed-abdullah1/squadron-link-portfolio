@@ -16,7 +16,7 @@ function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
-        className={`${inter.className} bg-gradient-to-b to-red-50  from-blue-100  overflow-hidden`}
+        className={`${inter.className} bg-gradient-to-b to-red-50  from-blue-100  `}
       >
         <TransitionProvider inter={inter}>{children}</TransitionProvider>
       </body>

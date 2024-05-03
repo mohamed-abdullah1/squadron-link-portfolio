@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { PulseLoader } from "react-spinners";
 
 const SendMailForm = () => {
   const [success, setSuccess] = useState(false);
@@ -14,16 +15,12 @@ const SendMailForm = () => {
     setError(false);
     setSuccess(false);
     setIsLoading(true);
-    emailjs
-      .sendForm(
-        "service_hw47sqj",
-        "template_g111eed",
-        form.current,
+    console.log("👉🔥 ", form.current);
 
-        {
-          publicKey: "7aKNPdxKP0LULQ2bZ",
-        }
-      )
+    emailjs
+      .sendForm("service_hw47sqj", "template_g111eed", form.current, {
+        publicKey: "7aKNPdxKP0LULQ2bZ",
+      })
       .then(
         () => {
           setSuccess(true);
@@ -42,7 +39,7 @@ const SendMailForm = () => {
     <form
       ref={form}
       onSubmit={sendEmail}
-      className="bg-red-50 h-2/3 lg:h-3/4 w-full md:w-2/3 lg:w-1/2 lg:m-0 lg:m-15 flex flex-col p-8 lg:p-16 gap-6 rounded shadow-lg shadow-[#35353537]"
+      className="bg-red-50 h-2/3 lg:h-3/4 w-full md:w-2/3 lg:w-1/2 lg:m-0 lg:m-15 flex flex-col p-8 lg:p-10 gap-6 rounded"
     >
       {/* TITLE MESSAGE */}
       <p className="font-semibold ">Dear Squadron Link Team,</p>
@@ -65,7 +62,7 @@ const SendMailForm = () => {
       <p className="font-semibold">Regards.</p>
       {/* BUTTON  SEND*/}
       <button className="bg-indigo-300 text-white p-4 rounded  font-semibold hover:bg-transparent hover:text-indigo-300 border-2 border-indigo-300">
-        {isLoading ? "Loading... ⌛️" : "Send"}
+        {isLoading ? <PulseLoader color="white" /> : "Send"}
       </button>
       {success && (
         <p className="text-green-600 font-semibold">
