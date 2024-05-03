@@ -9,12 +9,16 @@ function NavbarItem({ link }) {
   return (
     <div
       className={`${
-        currentPath === link.url &&
+        currentPath === link?.url &&
         "bg-gradient-to-b to-[#f57489bb]  from-[#fbca69a5] text-white"
       } rounded px-2 py-1`}
     >
-      <Link className=" text-md font-semibold" href={link.url} key={link.title}>
-        {link.title}
+      <Link
+        className=" text-md font-semibold"
+        href={link?.url}
+        key={link?.title}
+      >
+        {link?.title}
       </Link>
     </div>
   );

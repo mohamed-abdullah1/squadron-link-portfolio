@@ -54,7 +54,7 @@ export default function Navbar() {
       {/* LINKS ITEMS */}
       <div className="hidden md:flex gap-1  md:w-1/3 ">
         {links.map((link) => (
-          <NavbarItem link={link} key={link.title} />
+          <NavbarItem link={link} key={link?.title} />
         ))}
       </div>
       {/* LOGO */}
@@ -110,10 +110,10 @@ export default function Navbar() {
             <div
               className="text-white text-3xl "
               onClick={() => setOpen(false)}
-              key={link.title}
+              key={link?.title}
             >
-              <Link href={link.url} key={link.title}>
-                {link.title}
+              <Link href={link.url} key={link?.title}>
+                {link?.title}
               </Link>
             </div>
           ))}

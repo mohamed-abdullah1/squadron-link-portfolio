@@ -31,7 +31,7 @@ const TransitionProvider = ({ children }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 0.3 }}
         >
-          {links.find((l) => l.url === pathname)?.title}
+          {links.find((l) => l?.url === pathname)?.title}
         </motion.div>
         <div className="h-24 border z-100">
           <Navbar />
