@@ -18,3 +18,7 @@
 .poppins {
   font-family: var(--poppins-font);
 }
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}

@@ -38,7 +38,7 @@ const TransitionProvider = ({ children }) => {
             </motion.div>
           </>
         )}
-        <div className="h-24 border z-100">
+        <div className="h-24  z-100">
           <Navbar />
         </div>
         <div className="h-[calc(100vh-6rem)] px-2 sm:px-4 md:px-8 lg:px-24 z-100">
