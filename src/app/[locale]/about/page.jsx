@@ -1,5 +1,5 @@
 import React from "react";
-import PageTransitionProvider from "../components/pageTrasitionProvider";
+import PageTransitionProvider from "../../components/pageTrasitionProvider";
 import Image from "next/image";
 
 export default function About() {

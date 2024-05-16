@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import PageTransitionProvider from "./components/pageTrasitionProvider";
+import PageTransitionProvider from "../components/pageTrasitionProvider";
 export default async function Home() {
   return (
     <PageTransitionProvider>
