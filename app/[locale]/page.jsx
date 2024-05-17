@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Link } from "../../navigation";
 import PageTransitionProvider from "./components/pageTrasitionProvider";
 import { useLocale, useTranslations } from "next-intl";
-
+import heroImg from "@/public/hero_2_@.png";
 export default async function Home() {
   const t = useTranslations("Home");
   const locale = useLocale();
@@ -19,7 +19,8 @@ export default async function Home() {
             }`}
             alt="hero image"
             fill
-            src="/hero_2_@.png"
+            src={heroImg}
+            placeholder="blur"
           />
         </div>
         {/* TEXT CONTAINER */}
