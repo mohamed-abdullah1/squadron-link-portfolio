@@ -22,7 +22,7 @@ async function RootLayout({ children }) {
       </Head>
       <body
         className={`${
-          locale === "en" ? cairo.className : cairo.className
+          locale === "ar" ? cairo.className : inter.className
         } bg-gradient-to-b to-red-50  from-blue-100  `}
       >
         <NextIntlClientProvider messages={messages}>
