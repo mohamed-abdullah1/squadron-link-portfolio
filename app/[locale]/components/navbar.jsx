@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { Link } from "@/navigation";
+import { useEffect, useState } from "react";
 import NavbarItem from "./navbarItem";
 import { motion } from "framer-motion";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import { useTranslations } from "next-intl";
 const links = [
-  { url: "/", title: "Home" },
-  { url: "/about", title: "About" },
-  { url: "/contact", title: "Contact" },
-  { url: "/projects", title: "Projects" },
+  { url: "/", title: "home" },
+  { url: "/about", title: "about" },
+  { url: "/contact", title: "contact" },
+  { url: "/projects", title: "projects" },
 ];
 const hamburgerMenuVariantsTop = {
   open: {
@@ -49,18 +51,22 @@ const blackBgVariants = {
 };
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("Navbar");
+
   return (
     <div className="flex items-center justify-between h-full px-2 sm:px-4 md:px-8 lg:px-24">
       {/* LINKS ITEMS */}
       <div className="hidden md:flex gap-1  md:w-1/3 ">
-        {links.map((link) => (
-          <NavbarItem link={link} key={link?.title} />
-        ))}
+        {links
+          .map((link) => ({ ...link, title: t(link.title) }))
+          .map((link, index) => (
+            <NavbarItem link={link} key={index} />
+          ))}
       </div>
       {/* LOGO */}
       <Link href="/" className="md:w-1/3 md:flex md:justify-center">
         <Image
-          src={"logo.svg"}
+          src={"/logo.svg"}
           width={200}
           height={200}
           className=" "
@@ -106,26 +112,32 @@ export default function Navbar() {
           animate={"open"}
           initial={"closed"}
         >
-          {links.map((link) => (
-            <div
-              className="text-white text-3xl "
-              onClick={() => setOpen(false)}
-              key={link?.title}
-            >
-              <Link href={link.url} key={link?.title}>
-                {link?.title}
-              </Link>
-            </div>
-          ))}
+          {links
+            .map((link) => ({ ...link, title: t(link.title) }))
+            .map((link) => (
+              <div
+                className="text-white text-3xl "
+                onClick={() => setOpen(false)}
+                key={link?.title}
+              >
+                <Link href={link.url} key={link?.title}>
+                  {link?.title}
+                </Link>
+              </div>
+            ))}
+          <div className="text-white">
+            <LanguageSwitcher />
+          </div>
         </motion.div>
       )}
       {/* SOCIAL LINKS */}
       <div className="hidden md:flex gap-2 md:gap-4 md:w-1/3 justify-center ">
-        <Image src="/facebook.png" width={20} height={20} alt="facebook" />
+        {/* <Image src="/facebook.png" width={20} height={20} alt="facebook" />
         <Image src="/dribbble.png" width={20} height={20} alt="dribbble" />
         <Image src="/github.png" width={20} height={20} alt="github" />
         <Image src="/linkedin.png" width={20} height={20} alt="linkedin" />
-        <Image src="/instagram.png" width={20} height={20} alt="instagram" />
+        <Image src="/instagram.png" width={20} height={20} alt="instagram" /> */}
+        <LanguageSwitcher />
       </div>
     </div>
   );

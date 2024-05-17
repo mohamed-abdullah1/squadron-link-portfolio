@@ -1,8 +1,10 @@
 import React from "react";
 import PageTransitionProvider from "../components/pageTrasitionProvider";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function About() {
+  const t = useTranslations("About");
   return (
     <PageTransitionProvider>
       {/* CONTAINER */}
@@ -11,27 +13,13 @@ export default function About() {
         <div className="h-1/2 md:h-full justify-around text-start md:text-start w-full lg:w-1/2 flex flex-col gap-2 md:gap-4 lg:gap-12 ">
           {/* BIOGRAPHY */}
           <div className="border mt-12 flex flex-col gap-4">
-            <h1 className="font-bold text-3xl">BIOGRAPHY 🧩</h1>
-            <p>
-              Our squadron is comprised of seasoned experts and visionary minds,
-              united by a passion for pushing the boundaries of possibility in
-              the digital landscape. Through a harmonious blend of expertise and
-              creativity, we have mastered the art of transforming concepts into
-              tangible realities, propelling our clients' digital presence to
-              unprecedented levels of success.
-            </p>
-            <p>
-              At Squadron Link, we believe in the power of collaboration and
-              synergy, working closely with our clients to understand their
-              unique goals and challenges. Armed with this insight, we embark on
-              a journey of discovery and creation, leveraging our technical
-              prowess and inventive spirit to engineer solutions that surpass
-              expectations.
-            </p>
+            <h1 className="font-bold text-3xl">{t("title")}</h1>
+            <p>{t("desc1")}</p>
+            <p>{t("desc2")}</p>
           </div>
           {/* SKILLS */}
           <div className="border mt-12 flex flex-col gap-4">
-            <h1 className="font-bold text-3xl">SKILLS 🌟</h1>
+            <h1 className="font-bold text-3xl">{t("title2")}</h1>
             <div className="flex flex-wrap gap-2">
               <div className="bg-black p-4 rounded cursor-pointer hover:bg-white hover:text-black hover:shadow hover:shadow-black text-white">
                 REACT JS
