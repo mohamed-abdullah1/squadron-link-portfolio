@@ -3,8 +3,11 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { PulseLoader } from "react-spinners";
+import { useTranslations } from "next-intl";
 
 const SendMailForm = () => {
+  const t = useTranslations("Contact");
+
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("Can't send the mail !");
@@ -23,7 +26,6 @@ const SendMailForm = () => {
 
     setError(false);
     setSuccess(false);
-    console.log("👉🔥 ", form.current);
     if (!emailRef.current.value || !messageRef.current.value) {
       setErrorMsg("You Must enter the email and message first");
       return setError(true);
@@ -60,7 +62,7 @@ const SendMailForm = () => {
       className="bg-red-50 h-2/3 lg:h-3/4 w-full md:w-2/3 lg:w-1/2 lg:m-0 lg:m-15 flex flex-col p-8 lg:p-10 gap-6 rounded"
     >
       {/* TITLE MESSAGE */}
-      <p className="font-semibold ">Dear Squadron Link Team,</p>
+      <p className="font-semibold ">{t("header")}</p>
       {/* TEXT FIELD MESSAGE */}
       <textarea
         ref={messageRef}
@@ -70,7 +72,7 @@ const SendMailForm = () => {
         rows="10"
       />
       {/* TEXT EMAIL ADDRESS MESSAGE */}
-      <p className="font-semibold">My email address</p>
+      <p className="font-semibold">{t("emailAddress")}</p>
       {/* INPUT email FIELD */}
       <input
         ref={emailRef}
@@ -79,18 +81,16 @@ const SendMailForm = () => {
         name="user_name"
       />
       {/* REGARDS MESSAGE */}
-      <p className="font-semibold">Regards.</p>
+      <p className="font-semibold">{t("regards")}</p>
       {/* BUTTON  SEND*/}
       <button className="bg-indigo-300 text-white p-4 rounded  font-semibold hover:bg-transparent hover:text-indigo-300 border-2 border-indigo-300">
-        {isLoading ? <PulseLoader color="white" /> : "Send"}
+        {isLoading ? <PulseLoader color="white" /> : t("send")}
       </button>
       {success && (
-        <p className="text-green-600 font-semibold">
-          Email Sent Successfully !
-        </p>
+        <p className="text-green-600 font-semibold">{t("successMessage")}</p>
       )}
 
-      {error && <p className="text-red-600 font-semibold ">{errorMsg}</p>}
+      {error && <p className="text-red-600 font-semibold ">{t(errorMsg)}</p>}
     </form>
   );
 };

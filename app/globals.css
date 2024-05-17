@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* From Public Directory */
-@font-face {
-  font-family: "cairo-css";
-  src: url("../public/Cairo/Cairo-VariableFont_slnt\,wght.ttf");
-  font-style: medium;
-  font-weight: normal;
-  font-display: swap;
-}
 * {
   padding: 0;
   margin: 0;
