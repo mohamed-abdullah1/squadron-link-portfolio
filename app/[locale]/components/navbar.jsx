@@ -54,9 +54,27 @@ const blackBgVariants = {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const t = useTranslations("Navbar");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // return () => {
+    //   window.removeEventListener("scroll", handleScroll);
+    // };
+  }, []);
+  console.log("👉🔥 ", { isScrolled });
 
   return (
-    <div className="flex items-center justify-between h-full px-2 sm:px-4 md:px-8 lg:px-24">
+    <div
+      className={`flex items-center justify-between h-full px-2 sm:px-4 md:px-8 lg:px-24 ${
+        false ? "bg-opacity-10 backdrop-blur-3xl shadow-md" : "bg-inherit"
+      }`}
+    >
       {/* LINKS ITEMS */}
       <div className="hidden md:flex gap-1  md:w-1/3 ">
         {links
@@ -123,7 +141,7 @@ export default function Navbar() {
                 </Link>
               </div>
             ))}
-          <div className="text-white flex gap-2">
+          <div className="text-primary flex gap-2">
             <LanguageSwitcher />
             <ModeToggle />
           </div>

@@ -18,7 +18,15 @@
     "title": "BIOGRAPHY 🧩",
     "desc1": "Our squadron is comprised of seasoned experts and visionary minds, united by a passion for pushing the boundaries of possibility in the digital landscape. Through a harmonious blend of expertise and creativity, we have mastered the art of transforming concepts into tangible realities, propelling our clients' digital presence to unprecedented levels of success.",
     "desc2": "At Squadron Link, we believe in the power of collaboration and synergy, working closely with our clients to understand their unique goals and challenges. Armed with this insight, we embark on a journey of discovery and creation, leveraging our technical prowess and inventive spirit to engineer solutions that surpass expectations.",
-    "title2": "SKILLS 🌟"
+    "title2": "SKILLS 🌟",
+    "title3": "Team Members 🛠️",
+    "harby": "Mohamed Harby",
+    "sayed": "Mohamed Elsayed",
+    "salma": "Salma Kishik",
+    "hussein": "Hussein Elbaharwy",
+    "frontend": "Frontend Developer",
+    "mobile": "Flutter Developer",
+    "backend": "Software Engineer"
   },
   "Contact": {
     "header": "Dear Squadron Link Team,",
