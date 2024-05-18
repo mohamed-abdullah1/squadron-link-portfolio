@@ -7,6 +7,8 @@ import NavbarItem from "./navbarItem";
 import { motion } from "framer-motion";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
+import ModeToggle from "@/app/components/toggleMode";
+
 const links = [
   { url: "/", title: "home" },
   { url: "/about", title: "about" },
@@ -15,11 +17,11 @@ const links = [
 ];
 const hamburgerMenuVariantsTop = {
   open: {
-    background: "rgb(255,255,255)",
+    // background: "rgb(255,255,255)",
     rotate: 45,
   },
   closed: {
-    background: "rgb(0,0,0)",
+    // background: "rgb(0,0,0)",
     rotate: 0,
   },
 };
@@ -33,11 +35,11 @@ const hamburgerMenuVariantsCenter = {
 };
 const hamburgerMenuVariantsBottom = {
   open: {
-    background: "rgb(255,255,255)",
+    // background: "rgb(255,255,255)",
     rotate: -45,
   },
   closed: {
-    background: "rgb(0,0,0)",
+    // background: "rgb(0,0,0)",
     rotate: 0,
   },
 };
@@ -82,21 +84,17 @@ export default function Navbar() {
         onClick={() => setOpen((prev) => !prev)}
       >
         <motion.div
-          className={`h-1 w-8 ${
-            open ? "bg-white" : "bg-black"
-          } rounded origin-left`}
+          className={`h-1 w-8 ${"bg-black dark:bg-white"} rounded origin-left`}
           variants={hamburgerMenuVariantsTop}
           animate={open ? "open" : "closed"}
         ></motion.div>
         <motion.div
-          className={`h-1 w-8 ${open ? "bg-white" : "bg-black"} rounded`}
+          className={`h-1 w-8 ${"bg-black dark:bg-white"} rounded`}
           variants={hamburgerMenuVariantsCenter}
           animate={open ? "open" : "closed"}
         ></motion.div>
         <motion.div
-          className={`h-1 w-8 ${
-            open ? "bg-white" : "bg-black"
-          } rounded origin-left`}
+          className={`h-1 w-8 ${"bg-black dark:bg-white"} rounded origin-left`}
           variants={hamburgerMenuVariantsBottom}
           animate={open ? "open" : "closed"}
         ></motion.div>
@@ -104,7 +102,7 @@ export default function Navbar() {
       {/* ITEMS IN MOBILE VIEW */}
       {open && (
         <motion.div
-          className={`absolute z-10 top-0 right-0 h-screen bg-black  w-screen flex flex-col items-center justify-center gap-6 md:hidden ${
+          className={`absolute z-10 top-0 right-0 h-screen bg-gradient-to-b to-red-50  from-blue-100  dark:from-black dark:to-slate-900 w-screen flex flex-col items-center justify-center gap-6 md:hidden ${
             !open && "hidden"
           }`}
           // initial={{ right: 0 }}
@@ -116,7 +114,7 @@ export default function Navbar() {
             .map((link) => ({ ...link, title: t(link.title) }))
             .map((link) => (
               <div
-                className="text-white text-3xl "
+                className="text-primary text-3xl "
                 onClick={() => setOpen(false)}
                 key={link?.title}
               >
@@ -125,8 +123,9 @@ export default function Navbar() {
                 </Link>
               </div>
             ))}
-          <div className="text-white">
+          <div className="text-white flex gap-2">
             <LanguageSwitcher />
+            <ModeToggle />
           </div>
         </motion.div>
       )}
@@ -138,6 +137,7 @@ export default function Navbar() {
         <Image src="/linkedin.png" width={20} height={20} alt="linkedin" />
         <Image src="/instagram.png" width={20} height={20} alt="instagram" /> */}
         <LanguageSwitcher />
+        <ModeToggle />
       </div>
     </div>
   );

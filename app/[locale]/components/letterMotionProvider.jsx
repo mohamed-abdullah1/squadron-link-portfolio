@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 const LetterMotionProvider = ({ sayHelloText }) => {
   return (
-    <div className="text-[#000000bb] flex text-3xl md:text-3xl lg:text-6xl h-1/3 lg:h-full w-full lg:w-1/2  items-center justify-center font-semibold">
+    <div className="text-primary flex text-3xl md:text-3xl lg:text-6xl h-1/3 lg:h-full w-full lg:w-1/2  items-center justify-center font-semibold">
       <div>
         {sayHelloText.split("").map((letter, index) => (
           <motion.span

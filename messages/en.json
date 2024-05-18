@@ -28,6 +28,13 @@
     "errorCan'tSent": "Can't send the mail !",
     "errorEnter": "You Must enter the email and message first",
     "errorEmail": "This mail isn't valid",
-    "send": "Send"
+    "send": "Send",
+    "success": "Sent Successfully",
+    "error": "Problem"
+  },
+  "Languages": {
+    "languages": "Language",
+    "arabic": "Arabic",
+    "english": "English"
   }
 }

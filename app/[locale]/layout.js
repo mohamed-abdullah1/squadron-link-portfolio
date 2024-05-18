@@ -4,6 +4,8 @@ import TransitionProvider from "./components/transitionProvider";
 import Head from "next/head";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["arabic"], weight: "500" });
@@ -20,15 +22,23 @@ async function RootLayout({ children }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body
-        className={`${
-          locale === "ar" ? cairo.className : inter.className
-        } bg-gradient-to-b to-red-50  from-blue-100  `}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
       >
-        <NextIntlClientProvider messages={messages}>
-          <TransitionProvider inter={inter}>{children}</TransitionProvider>
-        </NextIntlClientProvider>
-      </body>
+        <body
+          className={`${
+            locale === "ar" ? cairo.className : inter.className
+          } bg-gradient-to-b to-red-50  from-blue-100  dark:from-black dark:to-slate-900`}
+        >
+          <NextIntlClientProvider messages={messages}>
+            <TransitionProvider inter={inter}>{children}</TransitionProvider>
+          </NextIntlClientProvider>
+          <Toaster />
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

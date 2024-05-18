@@ -4,6 +4,7 @@ import { Link } from "../../navigation";
 import PageTransitionProvider from "./components/pageTrasitionProvider";
 import { useLocale, useTranslations } from "next-intl";
 import heroImg from "@/public/hero_2_@.png";
+import { Button } from "@/components/ui/button";
 export default async function Home() {
   const t = useTranslations("Home");
   const locale = useLocale();
@@ -31,12 +32,16 @@ export default async function Home() {
           <div className="text-sm sm:text-sm md:text-lg">{t("desc")}</div>
           {/* BUTTONS CONTAINER */}
           <div className="flex justify-center lg:justify-start gap-4 ">
-            <button className="bg-black  text-white px-4 py-2  text-sm sm:text-lg md:text-xl  shadow-lg shadow-red-200 font-light rounded-md">
+            {/* <button className="bg-black  text-white px-4 py-2  text-sm sm:text-lg md:text-xl  shadow-lg shadow-red-200 font-light rounded-md"> */}
+            <Button className="text-sm sm:text-lg md:text-xl shadow-lg shadow-red-200 dark:shadow-black px-4 py-6 border-2 border-primary">
               <Link href="/projects">{t("viewProfile")}</Link>
-            </button>
-            <button className="border-2 rounded-md border-black px-4 py-2  text-sm sm:text-lg md:text-xl">
+            </Button>
+            {/* </button> */}
+            {/* <button className="border-2 rounded-md border-black px-4 py-2  text-sm sm:text-lg md:text-xl"> */}
+            <Button className="text-sm sm:text-lg md:text-xl text-primary border-2 border-primary hover:text-foreground hover:border-foreground px-4 py-6 bg-inherit foreground">
               <Link href="/contact">{t("contactUs")}</Link>
-            </button>
+            </Button>
+            {/* </button> */}
           </div>
         </div>
       </div>
